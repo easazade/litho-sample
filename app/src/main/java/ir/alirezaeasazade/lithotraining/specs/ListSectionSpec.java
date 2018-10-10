@@ -1,6 +1,8 @@
 package ir.alirezaeasazade.lithotraining.specs;
 
 
+import android.graphics.Color;
+
 import com.facebook.litho.sections.Children;
 import com.facebook.litho.sections.SectionContext;
 import com.facebook.litho.sections.annotations.GroupSectionSpec;
@@ -18,7 +20,13 @@ public class ListSectionSpec {
       builder.child(
         SingleComponentSection.create(context)
           .key(String.valueOf(i))
-          .component(ListItem.create(context)).build()
+          .component(
+            ListItem.create(context)
+            .color(i % 2 == 0 ? Color.WHITE : Color.LTGRAY)
+            .title("item "+(i+1))
+            .subtitle("Litho training")
+          )
+          .build()
       );
     }
     return builder.build();
